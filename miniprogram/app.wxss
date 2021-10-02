@@ -7,6 +7,7 @@ page {
   font-stretch: normal;
   text-align: left;
   color: #4a4a4a;
+  background-color: RGB(143, 193, 156);
 }
 .container {
   height: 100%;

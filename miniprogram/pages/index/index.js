@@ -2,83 +2,19 @@
 //获取应用实例
 const app = getApp()
 
-/***************增加转发分享功能 
- * onShareAppMessage: function (res) {
-    return {
-      title: 'ECharts 可以在微信小程序中使用啦！',
-      path: '/pages/index/index',
-      success: function () { },
-      fail: function () { }
-    }
-  },
- * 
- * 
-*/
 Page({
   data: {
     jump: false,
+    userInfo: {},
+    hasUserInfo: false,
+    canIUseGetUserProfile: false,
   },
-  onLoad: async function (options) {
-    //wx.cloud.init()
-    /*let imgList = new Array(11).fill('').map((file, v) => {
-      return `cloud://headimage-hust-o3pyd.6865-headimage-hust-o3pyd-1300324954/gh${
-        v + 1
-      }.png`
-    })
-
-    imgList = imgList.concat(
-      new Array(4).fill('').map((file, v) => {
-        return `cloud://headimage-hust-o3pyd.6865-headimage-hust-o3pyd-1300324954/zh${
-          v + 1
-        }.png`
+  onLoad:  function () {
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
       })
-    )
-    const res = await wx.cloud.getTempFileURL({
-      fileList: imgList,
-    })
-    const fileList = res.fileList
-    console.log('fileList', fileList)
-   
-    fileList.forEach(async (file, v) => {
-      let res = await wx.cloud.downloadFile({
-        fileID: file.fileID,
-      })
-      app.globalData.images[`img${v}`] = res.tempFilePath
-    })*/
-    /*let imgList = new Array(11).fill('').map((file, v) => {
-      return `cloud://headimage-hust-o3pyd.6865-headimage-hust-o3pyd-1300324954/gh${
-        v + 1
-      }.png`
-    })
-
-    imgList = imgList.concat(
-      new Array(4).fill('').map((file, v) => {
-        return `cloud://headimage-hust-o3pyd.6865-headimage-hust-o3pyd-1300324954/zh${
-          v + 1
-        }.png`
-      })
-    )
-
-    const res = await wx.cloud.getTempFileURL({
-      fileList: imgList,
-    })
-    const fileList = res.fileList
-    console.log('fileList', fileList)
-    wx.showLoading({
-      title: '加载资源中',
-      icon: 'loading',
-    })
-    for (let i = 0; i < fileList.length; i++) {
-      let res = await wx.cloud.downloadFile({
-        fileID: fileList[i].fileID,
-      })
-      app.globalData.images[`img${i}`] = res.tempFilePath
     }
-    wx.hideLoading()
-    this.setData({
-      jump: true,
-    })
-    console.log('云图片', app.globalData)*/
   },
   toselect() {
     /*if (this.data.jump) {
@@ -88,6 +24,41 @@ Page({
     }*/
     wx.navigateTo({
       url: '../madeph/madeph',
+    })
+  },
+  getUserProfile(e) {
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        //将用户信息保存本地缓存里
+        try{
+
+          // 同步接口立即写入
+        
+          wx.setStorageSync('userInfo', res.userInfo)
+        
+          console.log('写入userInfo成功')
+        
+        }catch (e) {
+        
+          console.log('写入userInfo发生错误')
+        
+        }
+        console.log(res.userInfo);
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    })
+  },
+  getUserInfo(e) {
+    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
     })
   },
 })
