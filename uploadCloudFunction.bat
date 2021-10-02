@@ -1,0 +1,1 @@
+"E:\微信web开发者工具\cli.bat" cloud functions deploy --e hust-headimage-sdmk0 --n quickstartFunctions --r --project "C:\Users\lenovo\Desktop\headimage" --report_first && "E:\微信web开发者工具\cli.bat" cloud functions deploy --e headimage-hust-o3pyd --n quickstartFunctions --r --project "C:\Users\lenovo\Desktop\headimage" --report

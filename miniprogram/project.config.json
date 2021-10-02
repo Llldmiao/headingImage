@@ -1,0 +1,58 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.3.0",
+  "appid": "wx48f0648e4162b388",
+  "projectname": "%E7%A0%94%E5%B0%8F%E6%8B%9B%E4%B8%93%E5%B1%9E%E5%A4%B4%E5%83%8F%E5%88%B6%E4%BD%9C",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 1,
+      "list": [
+        {
+          "id": -1,
+          "name": "mp",
+          "pathName": "pages/madeph/madeph",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "sel",
+          "pathName": "pages/select/select"
+        }
+      ]
+    }
+  }
+}
