@@ -1,15 +1,20 @@
 <!-- madeph.wxml -->
 <!-- 合成生产头像页 -->
-<view class="container flex">
-    <view style='width:100%;height:100%;position:relative'>
+<view class="container">
+    <view class="wrapper">
         <view class="img">
-            <image src="{{imgSrc}}" style="width:300rpx;height:300rpx" />
+            <image src="{{imgSrc}}" mode="widthFix" style="width: 100%;"></image>
         </view>
-        <view class="item flex" bindtap="upload" style='position:absolute;bottom:260rpx;background-color:#3cc6f7;color:white; '>
-            上传图片
-        </view>
-        <view class='item flex' bindtap='jump' style='color:#3cc6f7;position:absolute;bottom:100rpx;'>
-            下一步
+        <view class="button">
+            <view class="button-item" bindtap="upload">
+                用其他头像
+            </view>
+            <view class='button-item' bindtap='jump'>
+                就这张!
+            </view>
         </view>
     </view>
+    <view class="footer">
+            <image src="../../images/xiaozhaoLogo.png" class="logo" mode="widthFix" style="width: 200rpx;"></image>
+        </view>
 </view>
