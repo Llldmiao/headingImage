@@ -8,7 +8,7 @@
 
   <view class="result">
     <text class="tip">属于你的专属HUST头像已就位！</text>
-    <text class="tip"> 接下来，你还可以获得一张</text>
+    <text class="tip">接下来，你还可以获得一张</text>
     <text class="tip">由小招寄给你的明信片哦！</text>
   </view>
 
