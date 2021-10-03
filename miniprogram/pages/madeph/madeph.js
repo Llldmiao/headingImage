@@ -137,6 +137,20 @@ Page({
       })
     }
   },
+  onLoad: function() {
+    try{
+
+      // 同步接口立即返回值
+    
+      var userInfo = wx.getStorageSync('userInfo')
+    
+    }catch (e) {
+    
+      console.log('读取userInfo发生错误')
+    
+    }
+    app.globalData.cutImage = userInfo.avatarUrl
+  },
   onShow() {
     //开始裁剪
     let imgSrc
