@@ -1,7 +1,8 @@
-<view class='container {{theme}}'>
-  <view class="img" style="border: 8rpx solid {{color}};">
+<view class='container'>
+  <!-- <view class="img" style="border: 8rpx solid {{color}};">
     <canvas canvas-id="myCanvas" id='myCanvas' style="width:300rpx;height:300rpx;position:absolute"></canvas>
-    <image src="{{cutImage}}" style="width:{{width}}rpx;height:{{height}}rpx;position:absolute;z-index:99;left:{{left}}rpx;top:{{top}}rpx" />
+    <image src="{{cutImage}}"
+      style="width:{{width}}rpx;height:{{height}}rpx;position:absolute;z-index:99;left:{{left}}rpx;top:{{top}}rpx" />
     <image src="{{avtImage}}" style="width:300rpx;height:300rpx;position:absolute;z-index:99" />
   </view>
   <view class="tab" style="border-bottom:6rpx solid {{color}}">
@@ -13,7 +14,8 @@
     </view>
   </view>
   <view class="imageList">
-    <view class="imageBlock" bindtap='choosePic' wx:for="{{imageList}}" wx:for-item="picSrc" wx:for-index="idx" data-index='{{idx}}'>
+    <view class="imageBlock" bindtap='choosePic' wx:for="{{imageList}}" wx:for-item="picSrc" wx:for-index="idx"
+      data-index='{{idx}}'>
       <view class='imageWrapper'>
         <image class="image" src="{{picSrc}}"></image>
       </view>
@@ -22,6 +24,49 @@
   <view class='bottom'>
     <view class="back" style="color:white;background-color:{{color}}" bindtap='back'>上一步</view>
     <view class="save" style="border:6rpx solid {{color}};color:{{color}}" bindtap='save'>
+      保存头像
+    </view>
+  </view> -->
+  <view class="img-wrapper" style="border: 8rpx solid #8fc19c">
+    <canvas canvas-id="myCanvas" id='myCanvas' style="width:300rpx;height:300rpx;position:absolute"></canvas>
+    <image src="{{cutImage}}"
+      style="width:{{width}}rpx;height:{{height}}rpx;position:absolute;z-index:99;left:{{left}}rpx;top:{{top}}rpx" />
+    <image src="{{avtImage}}" style="width:300rpx;height:300rpx;position:absolute;z-index:99" />
+  </view>
+  <view class="avatar-list-wrapper">
+    <view class="avatar-list">
+      <text class="title">校庆主题</text>
+      <view class="list">
+        <view class="avatar-wrapper" wx:for="{{schoolImgList}}" wx:for-item="url" wx:for-index="idx"
+          data-index='{{idx}}' data-url='{{url}}' wx:key="idx" bindtap="choosePic">
+          <image src="{{url}}" alt="xq" style="width: 100%;height: 100%;object-fit: cover;" />
+        </view>
+      </view>
+    </view>
+    <view class="avatar-list">
+      <text class="title">百日冲刺</text>
+      <view class="list">
+        <view class="avatar-wrapper" wx:for="{{examImgList}}" wx:for-item="url" wx:for-index="idx" data-index='{{idx}}'
+          data-url='{{url}}' wx:key="idx" bindtap="choosePic">
+          <image src="{{url}}" alt="xq" style="width: 100%;height: 100%;object-fit: cover;" />
+        </view>
+      </view>
+    </view>
+    <view class="avatar-list">
+      <text class="title">学科主题</text>
+      <view class="list">
+        <view class="avatar-wrapper" wx:for="{{subjectImgList}}" wx:for-item="url" wx:for-index="idx"
+          data-index='{{idx}}' data-url='{{url}}' wx:key="idx" bindtap="choosePic">
+          <image src="{{url}}" alt="xq" style="width: 100%;height: 100%;object-fit: cover;" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="btn-group">
+    <view class="btn" bindtap='back'>
+      上一步
+    </view>
+    <view class="btn" bindtap='save'>
       保存头像
     </view>
   </view>

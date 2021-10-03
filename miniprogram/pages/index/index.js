@@ -39,7 +39,6 @@ Page({
         
           wx.setStorageSync('userInfo', res.userInfo)
         
-          console.log('写入userInfo成功')
         
         }catch (e) {
         

@@ -1,0 +1,21 @@
+<!--pages/profile/profile.wxml-->
+<view class="container">
+  <image src="../../images/surveyIcon.png" style="width: 150rpx;margin-top: 20%;" mode="widthFix"></image>
+  <view class="form">
+    <view class="form-item">
+      <view class="prefix">你的昵称</view> <input class="control" value="{{nickName}}" auto-focus maxlength="15" bindinput="bindKeyInput"/>
+    </view>
+    <view class="form-item">
+      <view class="prefix">请问你是</view>
+      <picker bindchange="bindChange" value="{{index}}" range="{{identities}}">
+        <view class="control" style="justify-content: center;">
+          {{identities[index]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="btn" bindtap="submit">下一步</view>
+  <view class="logo">
+    <image src="../../images/xiaozhaoLogo.png" mode="widthFix" style="width: 200rpx;" />
+  </view>
+</view>

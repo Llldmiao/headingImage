@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/madeph/madeph",
     "pages/cropper/cropper",
-    "pages/product/product"
+    "pages/product/product",
+    "pages/before-postcard/before-postcard",
+    "pages/survey/survey"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,6 +15,6 @@
   },
   "networkTimeout": {
     "request": 10000
-    },
+  },
   "sitemapLocation": "sitemap.json"
 }

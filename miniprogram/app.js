@@ -3,7 +3,7 @@
 App({
   onLaunch: function () {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      console.error("请使用 2.2.3 或以上的基础库以使用云能力");
     } else {
       wx.cloud.init({
         // env 参数说明：
@@ -14,16 +14,19 @@ App({
 
         //   如不填则使用默认环境（第一个创建的环境）
 
-        env: 'headimage-hust-o3pyd',
+        env: "headimage-hust-o3pyd",
 
         traceUser: true,
-      })
+      });
     }
   },
 
   globalData: {
     toubgsrc: null,
     images: {},
-    userInfo: null
-  }
-})
+    userInfo: null,
+    resImage: "",
+    nickName: "",
+    identity: "",
+  },
+});
