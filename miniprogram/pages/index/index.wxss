@@ -27,7 +27,3 @@ page {
 .userinfo {
   margin-top: 85rpx;
 }
-
-.logo {
-  margin-bottom: 29rpx;
-}

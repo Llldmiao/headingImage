@@ -7,7 +7,7 @@ page {
   font-stretch: normal;
   text-align: left;
   color: #4a4a4a;
-  background-color: RGB(143, 193, 156);
+  background-color:#8fc19c;
 }
 .container {
   height: 100%;
@@ -32,4 +32,7 @@ page {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.logo {
+  margin-bottom: 29rpx;
 }
