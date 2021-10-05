@@ -13,19 +13,17 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 
 .img-wrapper {
-  width: 300rpx;
-  height: 300rpx;
+  width: 200rpx;
+  height: 200rpx;
   border-radius: 10rpx;
-  left: calc(50% - 150rpx);
-  position: absolute;
-  top: 150rpx;
+  position: relative;
 }
 
 .avatar-list-wrapper {
-  margin-top: 70%;
   width: 80%;
 }
 

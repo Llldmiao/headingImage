@@ -1,17 +1,12 @@
 // pages/madeph/madeph.js
 const app = getApp()
 
-/**
- * 大概两部分：
- * 1、先把用户上传的头像画出来
- * 2、把前一个页面传过来的头像框（中间透明）再画上去
- */
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    imgSrc: '',
+    imgSrc: wx.getStorageSync('userInfo').avatarUrl,
     width: 250, //宽度
     height: 250, //高度
     condition: true,
@@ -124,8 +119,9 @@ Page({
       }, 100)
     )
   },
+
   jump() {
-    if (app.globalData.cutImage) {
+    if (this.data.imgSrc || app.globalData.cutImage) {
       wx.navigateTo({
         url: '../product/product',
       })
@@ -137,33 +133,16 @@ Page({
       })
     }
   },
+
   onLoad: function() {
-    try{
 
-      // 同步接口立即返回值
-    
-      var userInfo = wx.getStorageSync('userInfo')
-    
-    }catch (e) {
-    
-      console.log('读取userInfo发生错误')
-    
-    }
-    app.globalData.cutImage = userInfo.avatarUrl
   },
+  
   onShow() {
-    //开始裁剪
-    let imgSrc
-    if (!app.globalData.cutImage) {
-      imgSrc = ''
-    } else {
-      imgSrc = app.globalData.cutImage
+    if (app.globalData.cutImage) {
+      this.setData({
+        imgSrc:  app.globalData.cutImage,
+      })
     }
-
-    console.log('src', imgSrc)
-    this.setData({
-      imgSrc: imgSrc,
-    })
-    console.log('onshow', imgSrc, this.imgSrc)
   },
 })
