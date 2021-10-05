@@ -5,7 +5,8 @@
     "pages/cropper/cropper",
     "pages/product/product",
     "pages/before-postcard/before-postcard",
-    "pages/survey/survey"
+    "pages/survey/survey",
+    "pages/postcard/postcard"
   ],
   "window": {
     "backgroundTextStyle": "light",

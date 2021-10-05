@@ -35,10 +35,9 @@ Page({
     app.globalData.nickName = nickName;
     app.globalData.identity = identity;
     // 跳转逻辑
-    // wx.navigateTo({
-    //   url: 'url',
-    // })
-    console.log("这里补充一下跳转url");
+    wx.navigateTo({
+      url: '../postcard/postcard',
+    })
   },
 
   /**

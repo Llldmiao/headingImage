@@ -90,22 +90,28 @@ Page({
               canvasId: "myCanvas",
               success: function (res) {
                 console.log('合成的图片', res);
-                that.security(res);
+                // 保存制作完成的头像url
+                app.globalData.resImage = res.tempFilePath
+                wx.saveImageToPhotosAlbum({
+                  filePath: res.tempFilePath,
+                  success: function (data) {
+                    wx.hideLoading();
+                    wx.showToast({
+                      title: "保存成功",
+                      icon: "success",
+                      duration: 2000,
+                      success() {
+                        // 跳转下一页
+                        wx.navigateTo({
+                          url: "../before-postcard/before-postcard",
+                        });
+                      },
+                    });
+                  },
+                });
+                // that.security(res);
               },
             });
-            // wx.canvasToTempFilePath({
-            //   x: 0,
-            //   y: 0,
-            //   width: that.data.canvasWidth,
-            //   height: that.data.canvasHeight,
-            //   destWidth: that.data.canvasWidth,
-            //   destHeight: that.data.canvasHeight,
-            //   fileType: "png",
-            //   canvasId: "myCanvas",
-            //   success: function (res) {
-            //     that.security(res);
-            //   },
-            // });
           }, 100)
         );
       }

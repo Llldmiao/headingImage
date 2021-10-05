@@ -25,8 +25,9 @@ App({
     toubgsrc: null,
     images: {},
     userInfo: wx.getStorageSync('userInfo'),
+    cutImage: wx.getStorageSync('userInfo').avatarUrl,
     resImage: "",
-    nickName: "",
+    nickName: wx.getStorageSync('userInfo').nickName,
     identity: "",
   },
 });

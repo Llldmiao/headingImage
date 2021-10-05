@@ -49,7 +49,3 @@ page {
   font-size: 30rpx;
   color: #ffffff;
 }
-
-.logo{
-  margin-bottom: 10%;
-}

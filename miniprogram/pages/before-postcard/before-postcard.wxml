@@ -1,9 +1,8 @@
 <!-- index.wxml -->
 <view class="container">
   <view class="img-wrapper">
-    <!-- <image wx:if="{{resImage!==''}}" src="{{resImage}}}" style="width: 100%;height: 100%;object-fit: cover;" />
-    <image wx:else="" src="../../images/xiaozhaoAvatar.png" style="width: 100%;height: 100%;object-fit: cover;" /> -->
-    <image src="../../images/xiaozhaoAvatar.png" style="width: 100%;height: 100%;object-fit: cover;" />
+    <image wx:if="{{resImage!==''}}" src="{{resImage}}" style="width: 100%;height: 100%;object-fit: cover;" />
+    <image wx:else="" src="../../images/xiaozhaoAvatar.png" style="width: 100%;height: 100%;object-fit: cover;" />
   </view>
 
   <view class="result">

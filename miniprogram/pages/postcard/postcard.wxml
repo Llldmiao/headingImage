@@ -1,0 +1,9 @@
+<!--pages/postcard/postcard.wxml-->
+<view class="container">
+    <view class="wrapper">
+       <view style="font-size: 40rpx;">施工中。。。</view>
+    </view>
+    <view class="footer">
+        <image src="../../images/xiaozhaoLogo.png" class="logo" mode="widthFix" style="width: 200rpx;"></image>
+    </view>
+</view>
