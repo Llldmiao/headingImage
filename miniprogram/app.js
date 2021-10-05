@@ -24,7 +24,7 @@ App({
   globalData: {
     toubgsrc: null,
     images: {},
-    userInfo: null,
+    userInfo: wx.getStorageSync('userInfo'),
     resImage: "",
     nickName: "",
     identity: "",
