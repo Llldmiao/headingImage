@@ -5,13 +5,18 @@
         <image src="../../images/school.png" mode="widthFix" style="width: 277rpx;"></image>
         <!-- 获取 用户昵称&头像 -->
         <view class="userinfo">
-            <block wx:if="{{!hasUserInfo}}">
-                <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-                <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+            <image src="../../images/start.png" class="start" mode="heightFix" style="height: 46rpx;" bindtap='toselect'></image>
+            <!-- <block wx:if="{{!hasUserInfo}}">
+                <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 
+                    <image src="../../images/start.png" class="start" mode="heightFix" style="height: 46rpx;" bindtap='toselect'></image> 
+                </button>
+                <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
+                    <image src="../../images/start.png" class="start" mode="heightFix" style="height: 46rpx;" bindtap='toselect'></image> 
+                </button>
             </block>
             <block wx:else>
                 <image src="../../images/start.png" class="start" mode="heightFix" style="height: 46rpx;" bindtap='toselect'></image>
-            </block>
+            </block> -->
         </view>
     </view>
     <view class="footer">
