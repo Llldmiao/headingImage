@@ -22,34 +22,40 @@ Page({
         url: '../madeph/madeph',
       })
     }*/
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        //将用户信息保存本地缓存里
-        try{
-
-          // 同步接口立即写入
-        
-          wx.setStorageSync('userInfo', res.userInfo)
-        
-          console.log('写入userInfo成功')
-          wx.navigateTo({
-            url: '../madeph/madeph',
+    if(!app.globalData.userInfo) {
+      wx.getUserProfile({
+        desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          //将用户信息保存本地缓存里
+          try{
+  
+            // 同步接口立即写入
+          
+            wx.setStorageSync('userInfo', res.userInfo)
+            app.globalData.userInfo = res.userInfo;
+            console.log('写入userInfo成功')
+            wx.navigateTo({
+              url: '../madeph/madeph',
+            })
+          
+          }catch (e) {
+          
+            console.log('写入userInfo发生错误')
+          
+          }
+          console.log(res.userInfo);
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
           })
-        
-        }catch (e) {
-        
-          console.log('写入userInfo发生错误')
-        
         }
-        console.log(res.userInfo);
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
-    
+      })
+    }
+    else {
+      wx.navigateTo({
+        url: '../madeph/madeph',
+      })
+    }
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
