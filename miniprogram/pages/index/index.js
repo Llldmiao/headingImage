@@ -16,10 +16,11 @@ Page({
     wx.cloud.callFunction({
       name: 'getpostNum',
       complete: res => {
-        let postNum = res.result[0]?.postNum;
-        if(postNum) {
-          app.globalData.postNum = postNum;
-        }
+        // let postNum = res.result[0]?.postNum;
+        console.log(res);
+        // if(postNum) {
+        //   app.globalData.postNum = postNum;
+        // }
       }
     })
   },

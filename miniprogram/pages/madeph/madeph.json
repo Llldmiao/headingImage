@@ -1,4 +1,7 @@
-{
+{   
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#8fc19c",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "image-cropper": "../../image-cropper/image-cropper"
   }
