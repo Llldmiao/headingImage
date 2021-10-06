@@ -17,9 +17,28 @@ page {
 }
 .wrapper {
   width: 100%;
-  padding-top: 153rpx;
+  padding: 270rpx 0 91rpx;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:  center;
+  justify-content:  space-between;
+}
+
+.button {
+  width: 220rpx;
+  height: 59rpx;
+  color:white;
+  font-size: 31rpx;
+  line-height: 59rpx;
+  text-align: center;
+  border-radius: 12rpx/6rpx;
+  background-color:#8fc19c;
+}
+
+#postcard {
+  width: 1948px;
+  height: 1204px;
+  position: absolute;
+  left: -9999px;
 }

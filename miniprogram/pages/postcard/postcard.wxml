@@ -1,7 +1,18 @@
 <!--pages/postcard/postcard.wxml-->
 <view class="container">
     <view class="wrapper">
-       <view style="font-size: 40rpx;">施工中。。。</view>
+       <canvas type="2d" id="postcard"></canvas>
+
+       <image wx:if="{{postcard !== ''}}" 
+        src="{{postcard}}"
+        mode='widthFix'
+        style="width: 562rpx;"></image>
+       <image wx:else  
+        src="{{postcardImg}}"
+        mode="widthFix"
+        style="width: 562rpx;"></image>
+
+        <view class="button" bindtap="savePostcard">保存明信片</view>
     </view>
     <view class="footer">
         <image src="../../images/xiaozhaoLogo.png" class="logo" mode="widthFix" style="width: 200rpx;"></image>

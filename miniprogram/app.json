@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/postcard/postcard",
     "pages/index/index",
     "pages/madeph/madeph",
     "pages/cropper/cropper",
     "pages/product/product",
     "pages/before-postcard/before-postcard",
-    "pages/survey/survey",
-    "pages/postcard/postcard"
+    "pages/survey/survey"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
