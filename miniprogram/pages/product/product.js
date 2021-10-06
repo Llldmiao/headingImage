@@ -48,7 +48,7 @@ Page({
   },
   onReady: function () {
     let that = this;
-    console.log('this.data.cutImage: ', app.globalData.cutImage);
+    //console.log('this.data.cutImage: ', app.globalData.cutImage);
     wx.getImageInfo({
       src: this.data.cutImage,
       success: function (res) {
@@ -80,7 +80,7 @@ Page({
     wx.getImageInfo({
       src: this.data.avtImage,
       success: function (res) {
-        console.log('头像框', res);
+        // console.log('头像框', res);
         that.ctx.drawImage(res.path, 0, 0, 250, 250);
         that.ctx.draw(
           true,

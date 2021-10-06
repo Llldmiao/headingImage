@@ -1,6 +1,5 @@
 <!-- index.wxml -->
 <view class="container">
-    <!-- 底部的跳转选择头像框button -->
     <view class="wrapper">
         <image src="../../images/school.png" mode="widthFix" style="width: 277rpx;"></image>
         <!-- 获取 用户昵称&头像 -->

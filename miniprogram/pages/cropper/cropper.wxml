@@ -1,6 +1,6 @@
 <image-cropper id="image-cropper" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut" limit_move="{{limit_move}}" disable_rotate="{{disable_rotate}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" angle="{{angle}}" disable_width="{{disable_width}}" max_width="{{max_width}}" max_height="{{max_height}}" disable_height="{{disable_height}}" disable_ratio="{{disable_ratio}}"></image-cropper>
 <view class='bottom'>
-  <button catchtap='submit' style="width:80%;height:80rpx;line-height:80rpx;color:white;background-color:#3cc6f7">
+  <button catchtap='submit' style="width:80%;height:80rpx;line-height:80rpx;color:white;background-color:#8fc19c">
     确定
   </button>
 </view>

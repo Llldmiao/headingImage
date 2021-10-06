@@ -1,6 +1,6 @@
 // pages/postcard/postcard.js
 let app = getApp();
-
+console.log('app', app.globalData);
 Page({
 
   /**
@@ -8,7 +8,7 @@ Page({
    */
   data: {
     postcardImg: '../../images/明信片1948x1204.png',
-    headerImg: '../../images/header.png',
+    headerImg: '',
     postmask: '../../images/postmask.png',
     postcard: '',
     postNumber: 999999,
@@ -44,7 +44,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('onload',app.globalData)
+    this.setData({
+      headerImg: app.globalData.resImage
+    })
   },
 
   /**
@@ -86,6 +89,21 @@ Page({
             postmask.src = this.data.postmask;
           }
           headerImg.src = this.data.headerImg;
+          // headerImg.src = app.globalData.resImage;
+
+          // wx.getImageInfo({
+          //   src: app.globalData.resImage,
+          //   success (res) {
+          //     console.log(res);
+          //     ctx.drawImage(res.path, 1328, 275, 295, 134);
+          //                 //绘制邮戳
+          //   let postmask = canvas.createImage();
+          //   postmask.onload = () => {
+          //     ctx.drawImage(postmask, 1328, 275, 295, 134);
+          //   }
+          //   postmask.src = this.data.postmask;
+          //   }
+          // })
 
           //写祝福语
           // ctx.font = "42px sans-serif";
