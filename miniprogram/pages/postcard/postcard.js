@@ -1,6 +1,6 @@
 // pages/postcard/postcard.js
 let app = getApp();
-console.log('app', app.globalData);
+
 Page({
 
   /**
@@ -11,22 +11,23 @@ Page({
     headerImg: '',
     postmask: '../../images/postmask.png',
     postcard: '',
-    postNumber: 999999,
+    postNumber: '999999',
     reciver: 'To：不上华科不改名',
+    identify: -1,
     context: `执笔为剑，披荆斩棘；以梦为马，驰骋远方。将所有的努力都化为考场上的小确幸，明年9月，我们华中大见。`,
     greetings: {
-      1: [
-        '乘风破浪，不负青春。明年九月，华中大见。',
-        '纵有疾风起，人生不言弃。明年9月，我们华中大见。',
+      0: [
+        '乘风破浪，不负青春。\n明年九月，华中大见。',
+        '纵有疾风起，人生不言弃。\n明年9月，我们华中大见。',
         '不怕别人阻挡，只怕自己投降。\n坚持住，小招在华中大等你！',
         '用这生命中的每一秒，书写一个不后悔的未来。\n明年9月，我们华中大见。',
         '愿过往所有的遗憾，都是考研上岸惊喜的铺垫。\n明年9月，我们华中大见。',
         '甘居幽暗而努力不懈，蓦然回首必柳暗花明。\n期待在明年的金秋，在华中大与你相遇。',
         '跨过星河迈过月亮，去迎接更好的自己。\n天青色等烟雨，小招在华中大等待那个更优秀的你！',
-        '执笔为剑，披荆斩棘；以梦为马，驰骋远方。\n将所有的努力都化为考场上的小确幸，明年9月，我们华中大见。',
+        '执笔为剑，披荆斩棘；以梦为马，驰骋远方。\n将所有的努力都化为考场上的小确幸，\n明年9月，我们华中大见。',
         'Where there is life，there is hope.一息若存，希望不灭。\n明年9月，我们华中大见。'
       ],
-      2: [
+      1: [
         '征途漫漫，惟有奋斗。',
         '乘风破浪，不负青春。',
         '保持热爱，奔赴山海。',
@@ -35,7 +36,7 @@ Page({
         '生命之灯因热情而点燃，生命之舟因拼搏而前行。',
         '精神的浩瀚，想象的活跃，心灵的勤奋，就是天才。',
         '勤勉而顽强地钻研，永远可以使你百尺竿头更进一步。',
-        '在事业的峰峦上，有汗水的溪流飞淌；在智慧的珍珠里，有勤奋的心血闪光。'
+        '在事业的峰峦上，有汗水的溪流飞淌；\n在智慧的珍珠里，有勤奋的心血闪光。'
       ]
     }
   },
@@ -46,7 +47,10 @@ Page({
   onLoad: function (options) {
     console.log('onload',app.globalData)
     this.setData({
-      headerImg: app.globalData.resImage
+      headerImg: app.globalData.resImage,
+      reciver: `To: ${app.globalData.nickName}`,
+      identify: app.globalData.identity,
+      postNumber: app.globalData.postNum
     })
   },
 
@@ -58,23 +62,32 @@ Page({
     query.select('#postcard')
       .fields({ node: true, size: true })
       .exec((res) => {
-        console.log(res);
         const canvas = res[0].node;
         const ctx = canvas.getContext('2d');
+
+        //绘制明信片
         let postcard = canvas.createImage();
         postcard.onload = () => {
           canvas.width = postcard.width;
           canvas.height = postcard.height;
           ctx.font = "300 70px 华文中宋";
           ctx.drawImage(postcard, 0, 0);
+
           //写邮政编码
           //x 水平方向， y 竖直方向
-          ctx.fillText('9', 150, 173);
-          ctx.fillText('9', 259, 173);
-          ctx.fillText('9', 368, 173);
-          ctx.fillText('9', 477, 173);
-          ctx.fillText('9', 586, 173);
-          ctx.fillText('9', 695, 173);
+          //以下注释代码帮助后面的同学理解
+          // ctx.fillText('9', 150, 173);
+          // ctx.fillText('9', 259, 173);
+          // ctx.fillText('9', 368, 173);
+          // ctx.fillText('9', 477, 173);
+          // ctx.fillText('9', 586, 173);
+          // ctx.fillText('9', 695, 173);
+          const postNumber = this.data.postNumber;
+          let [postNumX, postNumY] = [150, 173];
+          postNumber.split('').forEach((val) => {
+            ctx.fillText(val, postNumX, postNumY);
+            postNumX += 109;
+          })
 
           //绘制头像 / 邮票
           let headerImg = canvas.createImage();
@@ -89,34 +102,25 @@ Page({
             postmask.src = this.data.postmask;
           }
           headerImg.src = this.data.headerImg;
-          // headerImg.src = app.globalData.resImage;
-
-          // wx.getImageInfo({
-          //   src: app.globalData.resImage,
-          //   success (res) {
-          //     console.log(res);
-          //     ctx.drawImage(res.path, 1328, 275, 295, 134);
-          //                 //绘制邮戳
-          //   let postmask = canvas.createImage();
-          //   postmask.onload = () => {
-          //     ctx.drawImage(postmask, 1328, 275, 295, 134);
-          //   }
-          //   postmask.src = this.data.postmask;
-          //   }
-          // })
 
           //写祝福语
-          // ctx.font = "42px sans-serif";
+          const {identify, greetings} = this.data;
+          const index = Math.floor(Math.random() * greetings[identify].length); 
+          const bless = greetings[identify][index];
+          let [blessStartX, blessStartY] = [91, 545];
+
+          //test
+          const text = ctx.measureText(bless);
+          console.log(text.width);
+
           ctx.font = "42px 华文中宋";
-          ctx.fillText('执笔为剑，披荆斩棘；以梦为马，驰骋远方。', 91, 545);
-          ctx.fillText('将所有的努力都化为考场上的小确幸', 91, 645);
-          ctx.fillText('明年9月，我们华中大见。', 91, 745);
-
-          //TODO: 文本太长时，自动截断并换行
-          // const writeWidth = 1040; //可供写祝福语的区域宽度
-
-          // let text = ctx.measureText(this.data.context);
-          // console.log(text.width);
+          bless.split('\n').forEach((val) => {
+            ctx.fillText(val, blessStartX, blessStartY);
+            blessStartY += 100;
+          })
+          // ctx.fillText('执笔为剑，披荆斩棘；以梦为马，驰骋远方。', 91, 545);
+          // ctx.fillText('将所有的努力都化为考场上的小确幸', 91, 645);
+          // ctx.fillText('明年9月，我们华中大见。', 91, 745);
 
           //写收件人
           ctx.fillText(this.data.reciver, 91, 441);

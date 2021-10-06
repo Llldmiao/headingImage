@@ -12,7 +12,18 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+
+    wx.cloud.callFunction({
+      name: 'getpostNum',
+      complete: res => {
+        let postNum = res.result[0]?.postNum;
+        if(postNum) {
+          app.globalData.postNum = postNum;
+        }
+      }
+    })
   },
+
   toselect() {
     if(!app.globalData.userInfo) {
       wx.getUserProfile({

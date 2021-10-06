@@ -29,5 +29,6 @@ App({
     resImage: "",
     nickName: wx.getStorageSync('userInfo').nickName,
     identity: "",
+    postNum: "999999",
   },
 });
