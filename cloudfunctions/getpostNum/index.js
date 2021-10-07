@@ -19,15 +19,32 @@ const getUserNum = async (openid) => {
 }
 
 const addPostNum = async (openid) => {
-  let count = await getCollectionCount();
-  let postNum = (count + 1).toString().padStart(6, 0);
-  await db.collection('data').add({
-    data: {
-      _openid: openid,
-      postNum: postNum
-    }
-  })
+  return await getCollectionCount().then(res => {
+    console.log(res);
+    let postNum = (res + 1).toString().padStart(6, 0);
+    db.collection('data').add({
+      data: {
+        _openid: openid,
+        postNum: postNum
+      }
+    })
+    console.log('1111', postNum);
+  });
+  // let postNum = (count + 1).toString().padStart(6, 0);
+  
   return postNum
+  // let count = await getCollectionCount().then(res => {
+  //   let postNum = (res + 1).toString().padStart(6, 0);
+  //   await db.collection('data').add({
+  //     data: {
+  //       _openid: openid,
+  //       postNum: postNum
+  //     }
+  //   })
+  // });
+  // // let postNum = (count + 1).toString().padStart(6, 0);
+  
+  // return postNum
 }
 /*返回邮编号
 *查找集合中openid为当前openid的数据，
@@ -40,7 +57,8 @@ exports.main = async (event, context) => {
   if(user.length == 0){
     //插入数据
     var add = await addPostNum(wxContext.OPENID);
-    user = await getUserNum(wxContext.OPENID)
+    postNum = await getUserNum(wxContext.OPENID)
+    return postNum;
   }
   return user[0].postNum;
 }
