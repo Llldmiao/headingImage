@@ -155,7 +155,7 @@ Page({
     return {
       title: '研小招专属头像制作',
       path: '/pages/index/index',
-
+      imageUrl: this.data.postcard
     }
   },
 
