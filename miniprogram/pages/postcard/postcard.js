@@ -41,9 +41,6 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     wx.showShareMenu({
       withShareTicket: true,
@@ -127,27 +124,27 @@ Page({
           ctx.fillText(this.data.reciver, 91, 441);
 
           ctx.fillText('华中大研小招', 880, 845);
+
+          setTimeout(() => {
+            wx.canvasToTempFilePath({
+              x: 0,
+              y: 0,
+              canvas: canvas,
+              success: res => {
+                this.setData({
+                  postcard: res.tempFilePath
+                })
+                console.log('postcard: ', this.data.postcard);
+               
+                console.log('yebiyebi  ', res);
+              },
+              fail: err => {
+                console.log(err);
+              }
+            });
+          }, 500)
         }
         postcard.src = this.data.postcardImg;
-
-        setTimeout(() => {
-          wx.canvasToTempFilePath({
-            x: 0,
-            y: 0,
-            canvas: canvas,
-            success: res => {
-              this.setData({
-                postcard: res.tempFilePath
-              })
-              console.log('postcard: ', this.data.postcard);
-             
-              console.log('yebiyebi  ', res);
-            },
-            fail: err => {
-              console.log(err);
-            }
-          });
-        }, 500)
       })
   },
 
