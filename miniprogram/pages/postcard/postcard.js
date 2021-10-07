@@ -58,9 +58,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
     const query = wx.createSelectorQuery();
     query.select('#postcard')
@@ -154,22 +151,22 @@ Page({
       })
   },
 
-    /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
     return {
       title: '研小招专属头像制作',
-      path: '/pages/index/index'
+      path: '/pages/index/index',
+
     }
   },
 
   onShareTimeline() {
     return {
       title: '研小招专属头像制作',
-      path: '/pages/index/index'
+      path: '/pages/index/index',
+      imageUrl: this.data.postcard
     }
   },
+
   showModal() {
     let that = this;
     wx.showModal({
@@ -193,6 +190,19 @@ Page({
       }
     })
   },
+
+  shareToFriend() {
+    wx.previewImage({
+      urls: [this.data.postcard],
+      success: function(res) {
+
+      },
+      fail: function(err) {
+        console.log(err);
+      }
+    })
+  },
+
   savePostcard() {
     wx.showLoading({
       title: '保存中~~~',
