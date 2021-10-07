@@ -86,6 +86,14 @@ Page({
   },
   async save() {
     let that = this;
+    if(this.data.avtImage == '') {
+      wx.showToast({
+        title: '请先选择头像框哦',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
     wx.showLoading({
       title: "图片合成中",
       icon: "loading",
