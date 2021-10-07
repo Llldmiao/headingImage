@@ -214,7 +214,7 @@ Page({
         success: res => {
           wx.hideLoading();
           wx.showToast({
-            title: '已保存到相册，快去朋友圈里晒晒你的明信片吧',
+            title: '已保存到相册，快去朋友圈晒晒你的明信片吧',
             icon: 'none'
           });
         },
