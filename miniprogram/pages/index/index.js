@@ -6,7 +6,7 @@ Page({
   data: {
     canIUseGetUserProfile: false,
   },
-  onLoad:  function () {
+  onLoad: function () {
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -20,18 +20,37 @@ Page({
     wx.cloud.callFunction({
       name: 'getpostNum',
       complete: res => {
-        let postNum = res.result;
-        console.log(res);
-        if(postNum) {
-          app.globalData.postNum = postNum;
+        let postNum;
+        console.log(res.result);
+        if ('string' === typeof res.result) {
+          postNum = res.result
+          if (postNum && !Number.isNaN(Number(postNum))) {
+            app.globalData.postNum = postNum;
+          }
         }
+        else {
+          wx.cloud.callFunction({
+            name: 'getpostNum',
+            complete: res => {
+              let postNum;
+              if ('string' === typeof res.result) {
+                postNum = res.result
+                console.log(res.result);
+                if (postNum && !Number.isNaN(Number(postNum))) {
+                  app.globalData.postNum = postNum;
+                }
+              }
+            }
+          })
+        }
+
       }
     })
   },
 
-    /**
-   * 用户点击右上角分享
-   */
+  /**
+ * 用户点击右上角分享
+ */
   onShareAppMessage: function () {
     return {
       title: '研小招专属头像制作',
@@ -40,26 +59,26 @@ Page({
   },
 
   toselect() {
-    if(!app.globalData.userInfo) {
+    if (!app.globalData.userInfo) {
       wx.getUserProfile({
         desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
         success: (res) => {
           //将用户信息保存本地缓存里
-          try{
-  
+          try {
+
             // 同步接口立即写入
-          
+
             wx.setStorageSync('userInfo', res.userInfo)
             app.globalData.userInfo = res.userInfo;
             console.log('写入userInfo成功')
             wx.navigateTo({
               url: '../madeph/madeph',
             })
-          
-          }catch (e) {
-          
+
+          } catch (e) {
+
             console.log('写入userInfo发生错误')
-          
+
           }
           //console.log(res.userInfo);
           // this.setData({
@@ -75,7 +94,7 @@ Page({
       })
     }
   },
-  
+
   // getUserProfile(e) {
   //   // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
   //   // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -86,14 +105,14 @@ Page({
   //       try{
 
   //         // 同步接口立即写入
-        
+
   //         wx.setStorageSync('userInfo', res.userInfo)
-        
-        
+
+
   //       }catch (e) {
-        
+
   //         console.log('写入userInfo发生错误')
-        
+
   //       }
   //       console.log(res.userInfo);
   //       this.setData({
