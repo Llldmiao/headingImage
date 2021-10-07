@@ -62,7 +62,16 @@ Page({
       .exec((res) => {
         const canvas = res[0].node;
         const ctx = canvas.getContext('2d');
-
+        // Promise.all([
+        //   createImageBitmap(this.data.postcardImg),
+        //   createImageBitmap(this.data.headerImg),
+        //   createImageBitmap(this.data.postmask)
+        // ]).then((res) => {
+        //   canvas.width = res[0].width;
+        //   canvas.height = res[0].height;
+        //   console.log(res[0].width);
+        //   ctx.drawImage(res[0], 0, 0);
+        // })
         //绘制明信片
         let postcard = canvas.createImage();
         postcard.onload = () => {
@@ -87,6 +96,7 @@ Page({
             postNumX += 109;
           })
 
+          
           //绘制头像 / 邮票
           let headerImg = canvas.createImage();
           headerImg.onload = () => {
@@ -102,14 +112,10 @@ Page({
           headerImg.src = this.data.headerImg;
 
           //写祝福语
-          const {identify, greetings} = this.data;
-          const index = Math.floor(Math.random() * greetings[identify].length); 
+          const { identify, greetings } = this.data;
+          const index = Math.floor(Math.random() * greetings[identify].length);
           const bless = greetings[identify][index];
           let [blessStartX, blessStartY] = [91, 545];
-
-          //test
-          const text = ctx.measureText(bless);
-          console.log(text.width);
 
           ctx.font = "42px 华文中宋";
           bless.split('\n').forEach((val) => {
@@ -129,13 +135,15 @@ Page({
             wx.canvasToTempFilePath({
               x: 0,
               y: 0,
+              destWidth: canvas.width,
+              destHeight: canvas.height,
               canvas: canvas,
               success: res => {
                 this.setData({
                   postcard: res.tempFilePath
                 })
                 console.log('postcard: ', this.data.postcard);
-               
+
                 console.log('yebiyebi  ', res);
               },
               fail: err => {
@@ -172,11 +180,11 @@ Page({
       cancelColor: '#5e9e6f',
       confirmText: '就这样吧',
       confirmColor: '#8fc19c',
-      success (res) {
+      success(res) {
         if (res.confirm) {
           console.log('有有有！')
           that.savePostcard()
-         
+
         } else if (res.cancel) {
           console.log('就这样吧')
           that.savePostcard()
@@ -191,10 +199,10 @@ Page({
   shareToFriend() {
     wx.previewImage({
       urls: [this.data.postcard],
-      success: function(res) {
+      success: function (res) {
 
       },
-      fail: function(err) {
+      fail: function (err) {
         console.log(err);
       }
     })
@@ -205,7 +213,7 @@ Page({
       title: '保存中~~~',
     })
     //保存明信片
-    setTimeout(()=> {
+    setTimeout(() => {
       wx.saveImageToPhotosAlbum({
         filePath: this.data.postcard,
         success: res => {
@@ -222,7 +230,7 @@ Page({
           });
         }
       })
-    },500)
+    }, 500)
   }
 
 })
