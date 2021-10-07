@@ -73,6 +73,7 @@ Page({
 
             wx.setStorageSync('userInfo', res.userInfo)
             app.globalData.userInfo = res.userInfo;
+            app.globalData.cutImage = res.userInfo.avatarUrl;
             console.log('写入userInfo成功')
             wx.navigateTo({
               url: '../madeph/madeph',
