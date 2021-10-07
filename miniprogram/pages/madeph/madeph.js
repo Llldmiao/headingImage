@@ -35,7 +35,10 @@ Page({
   },
 
   onLoad: function() {
-
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
   },
   
   onShow() {
@@ -45,4 +48,20 @@ Page({
       })
     }
   },
+
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '研小招专属头像制作',
+      path: 'pages/index/index'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: '研小招专属头像制作',
+      path: 'pages/index/index'
+    }
+  }
 })

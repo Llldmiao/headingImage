@@ -6,7 +6,8 @@
     "pages/product/product",
     "pages/before-postcard/before-postcard",
     "pages/survey/survey",
-    "pages/postcard/postcard"
+    "pages/postcard/postcard",
+    "pages/leavemsg/leavemsg"
   ],
   "window": {
     "backgroundTextStyle": "light",

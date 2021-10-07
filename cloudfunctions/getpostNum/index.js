@@ -10,12 +10,24 @@ const _ = db.command
 
 const getCollectionCount = async () => {
   const count = await db.collection('data').count();
-  return count.total;
+  return Number(count.total);
 }
 
-const getPostNum = async (openid) => {
-  const postNum = await db.collection('data').where({_openid: openid}).get();
+const getUserNum = async (openid) => {
+  const postNum = await db.collection('data').where({ _openid: openid }).get();
   return postNum.data;
+}
+
+const addPostNum = async (openid) => {
+  let count = await getCollectionCount();
+  let postNum = (count + 1).toString().padStart(6, 0);
+  await db.collection('data').add({
+    data: {
+      _openid: openid,
+      postNum: postNum
+    }
+  })
+  return postNum
 }
 /*返回邮编号
 *查找集合中openid为当前openid的数据，
@@ -24,19 +36,12 @@ const getPostNum = async (openid) => {
 */
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();
-  let user = getPostNum(wxContext.OPENID);
- 
-  if(user.length > 0){
+  let user = await getUserNum(wxContext.OPENID);
+  if(user.length == 0){
     //插入数据
-    let count = getCollectionCount();
-    await db.collection('data').add({
-      data: {
-        openid: '{openid}',
-        postNum: (count+1).toFixed(6)
-      }
-    })
-    user = getPostNum(wxContext.OPENID);
+    var add = await addPostNum(wxContext.OPENID);
+    user = await getUserNum(wxContext.OPENID)
   }
-  return user;
+  return user[0].postNum;
 }
 

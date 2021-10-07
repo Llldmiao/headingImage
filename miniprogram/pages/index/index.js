@@ -11,18 +11,32 @@ Page({
       this.setData({
         canIUseGetUserProfile: true
       })
+      wx.showShareMenu({
+        withShareTicket: true,
+        menus: ['shareAppMessage', 'shareTimeline']
+      })
     }
 
     wx.cloud.callFunction({
       name: 'getpostNum',
       complete: res => {
-        // let postNum = res.result[0]?.postNum;
+        let postNum = res.result;
         console.log(res);
-        // if(postNum) {
-        //   app.globalData.postNum = postNum;
-        // }
+        if(postNum) {
+          app.globalData.postNum = postNum;
+        }
       }
     })
+  },
+
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '研小招专属头像制作',
+      path: '/index/index'
+    }
   },
 
   toselect() {

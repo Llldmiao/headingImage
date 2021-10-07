@@ -1,16 +1,11 @@
-// pages/before-postcard/before-postcard.js
-const app = getApp();
+// pages/leavemsg/leavemsg.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    resImage: "",
-  },
-  navigate() {
-    wx.navigateTo({
-      url: "../survey/survey",
-    });
+
   },
 
   /**
@@ -21,42 +16,57 @@ Page({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
     })
-    // console.log(app.globalData.resImage);
-    this.setData({
-      resImage: app.globalData.resImage,
-    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {},
+  onHide: function () {
+
+  },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {},
+  onUnload: function () {
+
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {},
+  onPullDownRefresh: function () {
+
+  },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {},
+  onReachBottom: function () {
 
+  },
+
+  onShareTimeline() {
+    return {
+      title: '研小招专属头像制作',
+      path: '/index/index'
+    }
+  },
+  
   /**
    * 用户点击右上角分享
    */
@@ -66,10 +76,4 @@ Page({
       path: '/index/index'
     }
   },
-  onShareTimeline() {
-    return {
-      title: '研小招专属头像制作',
-      path: '/index/index'
-    }
-  }
-});
+})

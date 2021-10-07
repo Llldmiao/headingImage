@@ -31,6 +31,10 @@ Page({
   },
 
   onLoad: async function () {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
     this.setData({
       cutImage: app.globalData.cutImage
     })
@@ -58,6 +62,22 @@ Page({
         })
       }
     })
+  },
+
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '研小招专属头像制作',
+      path: '/index/index'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: '研小招专属头像制作',
+      path: '/index/index'
+    }
   },
   back() {
     wx.navigateTo({

@@ -46,9 +46,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
     const userInfo = wx.getStorageSync("userInfo");
     if (userInfo !== null) {
       this.setData({ nickName: userInfo.nickName });
     }
-  }
+  },
+
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '研小招专属头像制作',
+      path: '/index/index'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: '研小招专属头像制作',
+      path: '/index/index'
+    }
+  },
 })
