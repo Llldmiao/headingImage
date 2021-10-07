@@ -160,14 +160,14 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '研小招专属头像制作',
-      path: '/index/index'
+      path: '/pages/index/index'
     }
   },
 
   onShareTimeline() {
     return {
       title: '研小招专属头像制作',
-      path: '/index/index'
+      path: '/pages/index/index'
     }
   },
   showModal() {
