@@ -28,9 +28,10 @@ page {
 }
 
 .avatar-list .title {
-  font-size: 35rpx;
+  font-size: 32rpx;
   color: #8fc19c;
   font-weight: 600;
+  margin-left: 5rpx;
 }
 
 .avatar-list .list {

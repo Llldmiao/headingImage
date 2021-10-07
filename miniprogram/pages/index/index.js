@@ -7,6 +7,9 @@ Page({
     canIUseGetUserProfile: false,
   },
   onLoad: function () {
+    // wx.navigateTo({
+    //   url: '../postcard/postcard',
+    // })
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true

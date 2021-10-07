@@ -14,7 +14,7 @@
 
         <view class="btn-wrap">
             <view class="button" bindtap="showModal">保存明信片</view>
-            <view class="button" bindtap="shareToFriend">分享给朋友</view>
+            <!-- <view class="button" bindtap="shareToFriend">分享给朋友</view> -->
             <!-- <button open-type='share' class="button">分享给朋友</button> -->
         </view>
         
