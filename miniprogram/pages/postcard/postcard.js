@@ -175,7 +175,7 @@ Page({
     wx.showModal({
       content: '有没有什么话相对自己说的，今天小招是你的树洞哦！',
       cancelText: '有有有！',
-      cancelColor: '#8fc19c',
+      cancelColor: '#5e9e6f',
       confirmText: '就这样吧',
       confirmColor: '#8fc19c',
       success (res) {

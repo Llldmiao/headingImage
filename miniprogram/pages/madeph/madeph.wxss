@@ -42,7 +42,7 @@ page {
   height: 59rpx;
   margin-top: 41rpx;
   color:white;
-  font-size: 40rpx;
+  font-size: 31rpx;
   line-height: 59rpx;
   border-radius: 12rpx/6rpx;
   background-color:#8fc19c;

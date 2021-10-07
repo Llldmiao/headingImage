@@ -31,7 +31,7 @@ page {
 
 .tip {
   font-size: 35rpx;
-  color: #8FC19C;
+  color: #5e9e6f;
   font-weight: 600;
   margin: 20rpx 0;
 }

@@ -28,8 +28,8 @@ page {
 #message {
   width: 574rpx;
   height: 413rpx;
-  padding: 0 25rpx;
-
+  padding: 25rpx;
+  box-sizing: border-box;
   font-size: 40rpx;
   color: #999999;
   border-radius: 30rpx;
