@@ -1,10 +1,13 @@
 // pages/leavemsg/leavemsg.js
+let app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    nickname: '',
     msg: ''
   },
 
@@ -21,9 +24,11 @@ Page({
         title: '提交中~~',
       })
 
+      
       const db = wx.cloud.database()
       db.collection('message').add({
         data: {
+          nickname: this.data.nickname,
           msg: this.data.msg
         },
         success: function (res) {
@@ -64,6 +69,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData);
+    this.setData({
+      nickname: app.globalData.nickName
+    })
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
