@@ -170,7 +170,29 @@ Page({
       path: '/index/index'
     }
   },
-
+  showModal() {
+    let that = this;
+    wx.showModal({
+      content: '有没有什么话相对自己说的，今天小招是你的树洞哦！',
+      cancelText: '有有有！',
+      cancelColor: '#8fc19c',
+      confirmText: '就这样吧',
+      confirmColor: '#8fc19c',
+      success (res) {
+        if (res.confirm) {
+          console.log('有有有！')
+          that.savePostcard()
+         
+        } else if (res.cancel) {
+          console.log('就这样吧')
+          that.savePostcard()
+          wx.navigateTo({
+            url: '../leavemsg/leavemsg',
+          })
+        }
+      }
+    })
+  },
   savePostcard() {
     wx.showLoading({
       title: '保存中~~~',

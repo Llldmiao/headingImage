@@ -12,7 +12,7 @@
         mode="widthFix"
         style="width: 562rpx;"></image>
 
-        <view class="button" bindtap="savePostcard">保存明信片</view>
+        <view class="button" bindtap="showModal">保存明信片</view>
     </view>
     <view class="footer">
         <image src="../../images/xiaozhaoLogo.png" class="logo" mode="widthFix" style="width: 200rpx;"></image>

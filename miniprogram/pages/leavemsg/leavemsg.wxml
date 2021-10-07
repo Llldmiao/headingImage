@@ -1,2 +1,14 @@
-<!--pages/leavemsg/leavemsg.wxml-->
-<text>pages/leavemsg/leavemsg.wxml</text>
+<view class="container">
+  <view class="wrapper">
+    <image src="../../images/tree.png" mode="widthFix" style="width: 255rpx;"></image>
+    <view class="textarea-wrap">
+      <form bindsubmit="bindFormSubmit">
+        <textarea name="message" id="message" value="{{msg}}" bindinput="bindKeyInput"></textarea>
+        <button form-type="submit"> 提交 </button>
+      </form>
+    </view>
+  </view>
+  <view class="footer">
+    <image src="../../images/xiaozhaoLogo.png" class="logo" mode="widthFix" style="width: 200rpx;"></image>
+  </view>
+</view>

@@ -5,9 +5,61 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    msg: ''
   },
 
+  bindKeyInput(e) {
+    this.setData({
+      msg: e.detail.value,
+    });
+  },
+
+  bindFormSubmit() {
+    let that = this;
+    if (this.data.msg.trim() !== '') {
+      wx.showLoading({
+        title: '提交中~~',
+      })
+
+      const db = wx.cloud.database()
+      db.collection('message').add({
+        data: {
+          msg: this.data.msg
+        },
+        success: function (res) {
+          that.setData({
+            msg: '',
+          });
+          wx.hideLoading()
+          wx.showToast({
+            title: "提交成功",
+            icon: "success",
+            duration: 1000,
+          });
+        },
+        fail: function (res) {
+          that.setData({
+            msg: '',
+          });
+          wx.hideLoading()
+          wx.showToast({
+            title: "提交成功",
+            icon: "success",
+            duration: 1000,
+          });
+        },
+      })
+    } else {
+      wx.showToast({
+        title: "请先留言哦~",
+        icon: "error",
+        duration: 1000,
+      });
+      return;
+    }
+
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -66,7 +118,7 @@ Page({
       path: '/index/index'
     }
   },
-  
+
   /**
    * 用户点击右上角分享
    */
