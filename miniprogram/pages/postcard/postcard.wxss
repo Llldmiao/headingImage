@@ -47,6 +47,6 @@ page {
 #postcard {
   width: 1948px;
   height: 1204px;
-  position: absolute;
+  position: fixed;
   left: -9999px;
 }
