@@ -47,7 +47,7 @@ Page({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
     })
-    // console.log('onload',app.globalData)
+    console.log('onload',app.globalData)
     this.setData({
       headerImg: app.globalData.resImage,
       reciver: `To: ${app.globalData.nickName}`,
@@ -105,18 +105,18 @@ Page({
           }
           
           //绘制头像 / 邮票
-          // let headerImg = canvas.createImage();
-          // headerImg.onload = () => {
-          //   ctx.drawImage(headerImg, 1579, 104, 250, 250);
+          let headerImg = canvas.createImage();
+          headerImg.onload = () => {
+            ctx.drawImage(headerImg, 1579, 104, 250, 250);
 
-          //   //绘制邮戳
-          //   let postmask = canvas.createImage();
-          //   postmask.onload = () => {
-          //     ctx.drawImage(postmask, 1328, 275, 295, 134);
-          //   }
-          //   postmask.src = this.data.postmask;
-          // }
-          // headerImg.src = this.data.headerImg;
+            //绘制邮戳
+            let postmask = canvas.createImage();
+            postmask.onload = () => {
+              ctx.drawImage(postmask, 1328, 275, 295, 134);
+            }
+            postmask.src = this.data.postmask;
+          }
+          headerImg.src = this.data.headerImg;
 
           //写祝福语
           const { identify, greetings } = this.data;
