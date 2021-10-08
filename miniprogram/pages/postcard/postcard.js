@@ -8,6 +8,7 @@ Page({
    */
   data: {
     postcardImg: '../../images/明信片1948x1204.png',
+    ercode: '../../images/ercode.jpg',
     headerImg: '',
     postmask: '../../images/postmask.png',
     postcard: '',
@@ -96,6 +97,12 @@ Page({
             postNumX += 109;
           })
 
+          //绘制二维码
+          let ercode = canvas.createImage();
+          ercode.src = this.data.ercode;
+          ercode.onload = () => {
+            ctx.drawImage(ercode, 446, 1009, 112, 112);
+          }
           
           //绘制头像 / 邮票
           let headerImg = canvas.createImage();
