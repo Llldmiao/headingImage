@@ -7,7 +7,7 @@
   </view>
   <view class="avatar-list-wrapper">
     <view class="avatar-list">
-      <text class="title">校庆主题</text>
+      <text class="title">6 9 周年</text>
       <view class="list">
         <view class="avatar-wrapper" wx:for="{{schoolImgList}}" wx:for-item="url" wx:for-index="idx"
           data-index='{{idx}}' data-url='{{url}}' wx:key="idx" bindtap="choosePic">
