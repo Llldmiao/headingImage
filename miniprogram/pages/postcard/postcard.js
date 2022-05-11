@@ -105,23 +105,24 @@ Page({
           }
           
           //绘制头像 / 邮票
-          // let headerImg = canvas.createImage();
-          // headerImg.onload = () => {
-          //   ctx.drawImage(headerImg, 1579, 104, 250, 250);
+          let headerImg = canvas.createImage();
+          headerImg.onload = () => {
+            ctx.drawImage(headerImg, 1579, 104, 250, 250);
 
-          //   //绘制邮戳
-          //   let postmask = canvas.createImage();
-          //   postmask.onload = () => {
-          //     ctx.drawImage(postmask, 1328, 275, 295, 134);
-          //   }
-          //   postmask.src = this.data.postmask;
-          // }
-          // headerImg.src = this.data.headerImg;
+            //绘制邮戳
+            let postmask = canvas.createImage();
+            postmask.onload = () => {
+              ctx.drawImage(postmask, 1328, 275, 295, 134);
+            }
+            postmask.src = this.data.postmask;
+          }
+          headerImg.src = this.data.headerImg;
 
           //写祝福语
           const { identify, greetings } = this.data;
           const index = Math.floor(Math.random() * greetings[identify].length);
-          const bless = greetings[identify][index];
+          // const bless = greetings[identify][index];
+          const bless = greetings[identify][2];
           let [blessStartX, blessStartY] = [91, 545];
 
           ctx.font = "42px 华文中宋";
