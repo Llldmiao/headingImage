@@ -47,7 +47,7 @@ Page({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
     })
-    // console.log('onload',app.globalData)
+    console.log('onload',app.globalData)
     this.setData({
       headerImg: app.globalData.resImage,
       reciver: `To: ${app.globalData.nickName}`,

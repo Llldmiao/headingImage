@@ -176,7 +176,7 @@ Page({
               })
               return
             } else {
-              console.log('安全图片')
+              console.log('安全图片...')
               wx.hideLoading()
               app.globalData.cutImage = that.originPic
 
